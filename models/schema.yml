@@ -29,7 +29,7 @@ models:
   - name: PLAYER_INFO
     description: this has list of all the players info
     columns:
-      - name: Team
+      - name: name
         data_tests:
           - unique
           - not_null
