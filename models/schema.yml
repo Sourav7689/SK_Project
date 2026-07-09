@@ -1,0 +1,44 @@
+models:
+  - name: int_players
+    description: this table has information about each player including teams they are part of.
+    columns:
+      - name: gender
+        description: This should have male and female values
+        tests:
+          - accepted_values:
+              arguments: 
+                values: ['Male','Female']
+      - name: TEAM_NAME
+        description: this will have international and club levels teams
+        tests:
+          - relationships:
+              arguments: 
+                to: ref('int_team')
+                field: Team
+
+  - name: int_team
+    description: this has list of all the teams. teams name will be unique
+    columns:
+      - name: Team
+        data_tests:
+          - unique
+          - not_null
+
+          # we can create more genric test but as of now we disussing only relationship,unique,not null,accepted values
+          
+  - name: PLAYER_INFO
+    description: this has list of all the players info
+    columns:
+      - name: Team
+        data_tests:
+          - unique
+          - not_null
+      - name: dob
+        description: this is player DOB
+
+  - name: stg_match_innings
+    description: this has match details
+    columns:
+      - name: extra_type
+        description: '{{doc("extra_type")}}'
+        
